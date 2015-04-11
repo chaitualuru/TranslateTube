@@ -517,6 +517,7 @@
 				color: #3a3939;
 				background: #fff;
 				box-shadow: inset 0 0 0 0px #fff;
+				border: 1px solid transparent;
 			}
 
 				input[type="button"].style2:hover,
@@ -528,6 +529,7 @@
 					color: #fff !important;
 					text-shadow: 0 0 0 0px rgba(255,255,255,0.25) !important;
 					text-decoration: none;
+					border: 1px solid white;
 				}
 				
 			input[type="button"].style3,
@@ -893,25 +895,8 @@
 				text-decoration: none;
 			}
 
-		.next {
-			display:block;
-			position: absolute;
-			right:2em;
-			top:13em;
-			font-size: 1.5em;
-			border: 1px solid rgba(0, 0, 0, 0);
-			border-radius: 100px;
-			padding: 30px 1px 30px 1px;
-		}
-		
-		.next:hover {
-			border: 1px solid white;
-			border-radius: 100px;
-		}
-
-		#banner #comedy iframe {
+		iframe {
 			display: block;
-			width:60%;
 			margin: 0 auto;
 		}
 
@@ -1240,3 +1225,8 @@
 			{
 				opacity: 1.0;
 			}
+
+	.carousel-control.right, .carousel-control.left{
+		background-image:none;
+	}
+
