@@ -8,7 +8,7 @@
 //     });
 // } else alert('getUserMedia not supported in this browser.');
 $(document).ready(function() {
-	$("#tt_info").innerHTML = "Press the microphone to record.";
+	document.getElementById("tt_info").innerHTML = "Press the microphone to record.";
 	var start_player = document.createElement('audio');
 	start_player.id = "short_audio1";
 	start_player.src = chrome.extension.getURL("../assets/sounds/start_recording.mp3");
@@ -25,11 +25,13 @@ $(document).ready(function() {
 	$(".wit-microphone").click(function() {
 		if (started) {
 			stop_player.play();
+			document.getElementById("tt_info").innerHTML = "Processing...";
 			$(".wit-microphone").removeClass("active");
 			started = false;
 		}
 		else {
 			start_player.play();
+			document.getElementById("tt_info").innerHTML = "Recording...";
 			$(".wit-microphone").addClass("active");
 			started = true;
 		}
