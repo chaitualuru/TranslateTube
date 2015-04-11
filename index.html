@@ -205,8 +205,6 @@
       var number = iframeId.substr(iframeId.length - 1);
       event.target.mute();
       SC.whenStreamingReady(function() {
-        // event.target.playVideo();
-        // sound.play();
         onReadys[number] = true;
       });
     }
@@ -217,18 +215,11 @@
     });
 
     //replace below with soundcloud track id
-    // var trackToken = getTokenById(vidId);
 
     videosRef.on("value", function(snapshot) {
       var videos = snapshot.val();
       for (var key in videos) {
         createYTObj(key, videos);
-        // if (videos[key].id == vidId) {
-        //   trackToken = videos[key].token;
-        //   SC.stream(trackToken, function(track){
-        //     sound = track;
-        //   });
-        // }
       }
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
@@ -283,11 +274,9 @@
       var number = iframeId.substr(iframeId.length - 1);
       if (event.data == YT.PlayerState.PAUSED) {
         vidTracks[number].pause();
-        console.log(number+" paused");
       }
       if (event.data == YT.PlayerState.PLAYING && onReadys[number]) {
         vidTracks[number].play();
-        console.log(number+" playing");
       }
       if (event.data == YT.PlayerState.PLAYING && !onReadys[number]) {
         event.target.pauseVideo();
