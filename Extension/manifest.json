@@ -10,18 +10,23 @@
 
   "browser_action": {
     "default_icon": "assets/icons/icon.png",
-    "default_popup": "popup/popup.html",
     "default_title": "Translate Tube"
+  },
+
+  "background": {
+    "persistent": true,
+    "scripts": ["script/background.js"]
   },
 
   "web_accessible_resources": [
   	"manifest.json",
-  	"assts/*"
+    "script/*",
+  	"assets/*"
   ],
 
   "permissions": [
-  	"activeTab",
-  	"audioCapture"
+    "tabs",
+    "https://www.youtube.com/*"
   ],
 
   "commands": {
