@@ -90,4 +90,8 @@
 
   window.Recorder = Recorder;
 
+<<<<<<< HEAD
 })(window);
+=======
+})(window);
+>>>>>>> 2c4c9ac2cdc58876adda31200c78f73ea461fd3a
