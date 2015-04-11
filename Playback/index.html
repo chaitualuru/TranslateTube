@@ -8,7 +8,7 @@
  <body>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
   <div id="players_container" style='margin:0 auto; width: 640px;'>
-     <div id="player"></div>
+     <!-- <div id="player"></div> -->
   </div>
 
   <div id="scPlayer"></div>
@@ -78,12 +78,22 @@
         vidTracks.push(track);
       });
       onReadys[numberOfVideos] = false;
-      var div = document.createElement('div');
-      div.id = 'player'+numberOfVideos;
-      document.getElementById('players_container').appendChild(div);
+      var div1 = document.createElement('div');
+      div1.class = 'item';
+      var div2 = document.createElement('div');
+      div2.class = 'container';
+      div2.id = 'player'+numberOfVideos;
+      div2.appendChild(div1);
+      if (vidCats[numberOfVideos]=='comedy') {
+        document.getElementById('cat1').appendChild(div1);
+      } else if (vidCats[numberOfVideos]=='education') {
+        document.getElementById('cat2').appendChild(div1);
+      } else if (vidCats[numberOfVideos]=='tech') {
+        document.getElementById('cat3').appendChild(div1);
+      }
       players[numberOfVideos] = new YT.Player('player'+numberOfVideos, {
-        height: '390',
-        width: '640',
+        height: '500px',
+        width: '100%',
         videoId: vidIds[numberOfVideos],
         playerVars:{
           'controls': '0',
