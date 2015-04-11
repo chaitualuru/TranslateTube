@@ -2,6 +2,8 @@
 <html>
  <head>
     <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="//cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+    <script src="../Backend/savedata.js"></script>
  </head>
  <body>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -58,10 +60,27 @@
       client_id: '9164f832e359d8127efc2d629213a63c'
     });
 
-    SC.stream(75647058, function(track){
-      sound = track;
-    });
+    //replace below with soundcloud track id
+    // var trackToken = getTokenById(vidId);
 
+          SC.stream(75647058, function(track){
+            sound = track;
+          });
+
+    // videosRef.on("value", function(snapshot) {
+    //   var videos = snapshot.val();
+    //   for (var key in videos) {
+    //     if (videos[key].id == vidId) {
+    //       trackToken = videos[key].token;
+    //       SC.stream(75647058, function(track){
+    //         sound = track;
+    //       });
+    //     }
+    //   }
+    // }, function (errorObject) {
+    //   console.log("The read failed: " + errorObject.code);
+    // });
+    // setTimeout(function () {console.log(trackToken);}, 3000);
 
     // 5. The API calls this function when the player's state changes.
     //    The function indicates that when playing a video (state=1),
