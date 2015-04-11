@@ -67,7 +67,7 @@ $(document).ready(function() {
 		        click.initEvent("click", true, true);
 		        link.dispatchEvent(click);
 	        });
-			
+
 	        document.getElementById("tt_info").innerHTML = "Paste URL here.";
 		}
 		else {
@@ -89,6 +89,8 @@ $(document).ready(function() {
 	    // if S is pressed, we stop the recording and package the WAV file
 	    } else if ( e.keyCode == 83 ){
 	        recorder && recorder.stop();
+
+	        console.log('Stop recording');
 
 	        recorder && recorder.exportWAV(function(blob) {
 		        console.log('Handing off the file now...');
