@@ -57,29 +57,26 @@
 
     //Sound Cloud Code
     SC.initialize({
-      client_id: '9164f832e359d8127efc2d629213a63c'
+      client_id: '7a85853e93bad9e808b23f3ef4dd78ad'
     });
 
     //replace below with soundcloud track id
     // var trackToken = getTokenById(vidId);
 
-          SC.stream(75647058, function(track){
-            sound = track;
-          });
-
-    // videosRef.on("value", function(snapshot) {
-    //   var videos = snapshot.val();
-    //   for (var key in videos) {
-    //     if (videos[key].id == vidId) {
-    //       trackToken = videos[key].token;
-    //       SC.stream(75647058, function(track){
-    //         sound = track;
-    //       });
-    //     }
-    //   }
-    // }, function (errorObject) {
-    //   console.log("The read failed: " + errorObject.code);
-    // });
+    videosRef.on("value", function(snapshot) {
+      var videos = snapshot.val();
+      for (var key in videos) {
+        createYTObj(key);
+        // if (videos[key].id == vidId) {
+        //   trackToken = videos[key].token;
+        //   SC.stream(trackToken, function(track){
+        //     sound = track;
+        //   });
+        // }
+      }
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
     // setTimeout(function () {console.log(trackToken);}, 3000);
 
     // 5. The API calls this function when the player's state changes.
