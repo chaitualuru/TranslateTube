@@ -1,0 +1,183 @@
+@font-face {
+  font-family: 'WhitneyBook';
+  src: url('../assets/fonts/whitneyhtf-book.eot?') format('eot'), url('../assets/fonts/whitneyhtf-book.woff') format('woff'), url('../assets/fonts/whitneyhtf-book.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'WhitneyBookSC';
+  src: url('../assets/fonts/whitneyhtf-booksc.eot?') format('eot'), url('../assets/fonts/whitneyhtf-booksc.woff') format('woff'), url('../assets/fonts/whitneyhtf-booksc.ttf') format('truetype');
+}
+
+* {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.2em;
+}
+
+#splash {
+	height: 650px;
+	background-image: url('../assets/images/background.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-align: center;
+}
+
+#logo {
+	height: 200px;
+	width: 200px;
+	margin: 3em auto 0em auto;
+}
+
+h1 {
+	font-family: 'WhitneyBookSC';
+	color: white;
+	font-size: 15em;
+}
+
+/*#left-container {
+	height:450px;
+	width:33%;
+	float:left;
+	margin-left: 90px;
+	background: -webkit-linear-gradient(top, #353535 0%,#3c3a3a 100%);
+	color: #9a9a9a;
+	font-size: 30px;
+	margin-bottom: 50px;
+}
+
+#right-container {
+	height:450px;
+	width:33%;
+	float:right;
+	margin-right: 90px;
+	background: -webkit-linear-gradient(top, #353535 0%,#3c3a3a 100%);
+	color: #9a9a9a;
+	font-size: 30px;
+	margin-bottom: 50px;
+}
+
+.instructions {
+	margin: 40px 100px 0px 100px;
+}*/
+
+#splash > h2 {
+	font-family: 'WhitneyBook';
+	font-weight: 200;
+	color: white;
+	font-size: 2em;
+	margin-bottom: 40px;
+}
+
+#download {	
+	padding: 0.2em 1em;
+	font-family: 'WhitneyBook';
+	font-size: 30px;
+	vertical-align: middle;
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	border-radius: 30px;
+	color: rgba(255,255,255,0.8);
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+#download:hover {
+	color: rgba(255,255,255,1);
+	border: 4px solid rgba(255, 255, 255, 1);
+}
+
+#features {
+	background: -webkit-linear-gradient(top, #ffffff 0%,#e9e9e9 100%);
+	text-align: center;
+	font-family: 'WhitneyBook';
+	position: relative;
+	height: 100%;
+	padding: 0 10%;
+}
+
+#features > h2 {
+	color: #383838;
+	font-size: 3em;
+	margin: 1em auto;
+}
+
+#video {
+	margin-bottom: 3em;
+}
+
+h3 {
+	clear:both;
+	font-size: 2em;
+}
+
+ul {
+	margin: 2em auto 4em auto;
+}
+
+ul > li {
+	margin: 1em auto;
+	font-family: 'Georgia';
+	font-style: italic;
+	font-size: 1.5em;
+	color: #ff3f4e;
+}
+
+ul > li:nth-child(even) {
+	color: #c03944;
+}
+
+#footer {
+	display: table;
+	width: 100%;
+	background: -webkit-linear-gradient(top, #353535 0%,#3c3a3a 100%);
+	text-align: center;
+	font-size: 1.1em;
+	line-height: 2em;
+	color: #9a9a9a;
+	font-family: 'WhitneyBook';
+	padding-top: 20px;
+	padding-bottom: 20px;
+	oveflow: scroll;
+}
+
+#footer > p:first-child {
+	font-size: 1.25em;
+}
+
+#footer_second {
+	margin: 0.5em auto;
+}
+
+#footer_second > p {
+	display: inline-block;
+
+	margin: 0em 0.5em;
+}
+
+a, a:active, a:visited {
+	text-decoration: none;
+	color: #9a9a9a;
+	border-bottom: 1px solid #9a9a9a;
+}
+
+a:hover {
+	border-bottom: 2px solid #9a9a9a;
+}
+
+#image_anchor {
+	border: none;
+	background-image: url('../assets/images/logo_lightgrey.png');
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 1.5em;
+	width: 1.5em;
+	vertical-align: middle;
+	cursor: pointer;
+	background-size: contain;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+}
+
+#image_anchor:hover {
+	background-image: url('../assets/images/logo_darkgrey.png');
+	transition: 0.5s;
+	-webkit-transition: 0.5s;

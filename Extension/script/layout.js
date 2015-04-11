@@ -1,7 +1,7 @@
 if ($("#tt_container").is(':visible')) {
 	console.log("TT is visible. Now hiding.");
 	var currentSession = Number(document.getElementById('tt_container').getAttribute('data-session-id'));
-	var newSession = (currentSession + 0.5).toString();
+	var newSession = (currentSession - 1).toString();
 	console.log("TT session: " + newSession);
 	document.getElementById('tt_container').setAttribute('data-session-id', newSession);
 	$("#tt_container").animate({right:"30px"},200).animate({right:"-330px"},300, function() {
@@ -13,7 +13,7 @@ else if ($('#tt_container').is(':hidden')) {
 	$("#tt_container").show();
 	$("#tt_container").animate({right:"-300px"},0).animate({right:"30px"},300).animate({right:"15px"},200);
 	var currentSession = Number(document.getElementById('tt_container').getAttribute('data-session-id'));
-	var newSession = (currentSession + 0.5).toString();
+	var newSession = (currentSession + 1).toString();
 	console.log("TT session: " + newSession);
 	document.getElementById('tt_container').setAttribute('data-session-id', newSession);
 }

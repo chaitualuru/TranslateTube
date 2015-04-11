@@ -19,8 +19,8 @@
   },
 
   "web_accessible_resources": [
-  	"manifest.json",
-    "script/*",
+    "microphone.html",
+  	"css/microphone.css",
   	"assets/*"
   ],
 
