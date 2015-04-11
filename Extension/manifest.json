@@ -1,0 +1,36 @@
+{
+	"manifest_version": 2,
+  "name": "Translate Tube",
+  "version": "0.1",
+
+  "description": "Multilingual video playback for YouTube.",
+  "icons": {
+    "128": "assets/icons/icon128.png"
+  },
+
+  "browser_action": {
+    "default_icon": "assets/icons/icon.png",
+    "default_popup": "popup/popup.html",
+    "default_title": "Translate Tube"
+  },
+
+  "web_accessible_resources": [
+  	"manifest.json",
+  	"assts/*"
+  ],
+
+  "permissions": [
+  	"activeTab",
+  	"audioCapture"
+  ],
+
+  "commands": {
+  	"_execute_browser_action": {
+  		"suggested_key": {
+  			"default": "Alt+Shift+T"
+  		}
+  	}
+  },
+
+  "author": "kcaluru"
+}
