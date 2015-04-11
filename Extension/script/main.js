@@ -1,125 +1,49 @@
-var url = document.URL;
-console.log(url);
+// var simulateClick = function(element) {
+//   var dispatchEvent = function (elt, name) {
+//     var clickEvent = document.createEvent('MouseEvents');
+//     clickEvent.initEvent(name, true, true);
+//     elt.dispatchEvent(clickEvent);
+//   };
+//   dispatchEvent(element, 'mouseover');
+//   dispatchEvent(element, 'mousedown');
+//   dispatchEvent(element, 'click');
+//   dispatchEvent(element, 'mouseup');
+// };
 
-if (!navigator.getUserMedia) {
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+// simulateClick(document.getElementsByClassName("ytp-button ytp-button-volume")[0]);
+// simulateClick(document.getElementsByClassName("ytp-button ytp-button-play")[0]);
+
+if ($("#tt_container").is(':visible')) {
+	console.log("tt_container is visible. Now hiding.");
+	$("#tt_container").animate({right:"30px"},200).animate({right:"-330px"},300, function() {
+		$("#tt_container").hide();
+	});
 }
-    
-if (navigator.getUserMedia){
-    navigator.getUserMedia({audio:true}, success, function(e) {
-    alert('Error capturing audio.');
-    });
-} else alert('getUserMedia not supported in this browser.');
+else if ($('#tt_container').is(':hidden')) {
+	console.log("tt_container is hidden. Now making visible again.");
+	$("#tt_container").show();
+	$("#tt_container").animate({right:"-300px"},0).animate({right:"30px"},300).animate({right:"15px"},200);
+}
+else {
+	console.log("tt_container is being initialized for the first time. Creating tt.");
 
-function success(e){
-    // creates the audio context
-    audioContext = window.AudioContext || window.webkitAudioContext;
-    context = new audioContext();
- 
-    // retrieve the current sample rate to be used for WAV packaging
-    sampleRate = context.sampleRate;
- 
-    // creates a gain node
-    volume = context.createGain();
- 
-    // creates an audio node from the microphone incoming stream
-    audioInput = context.createMediaStreamSource(e);
- 
-    // connect the stream to the gain node
-    audioInput.connect(volume);
- 
-    /* From the spec: This value controls how frequently the audioprocess event is 
-    dispatched and how many sample-frames need to be processed each call. 
-    Lower values for buffer size will result in a lower (better) latency. 
-    Higher values will be necessary to avoid audio breakup and glitches */
-    var bufferSize = 2048;
-    recorder = context.createJavaScriptNode(bufferSize, 2, 2);
- 
-    recorder.onaudioprocess = function(e){
-        console.log ('recording');
-        var left = e.inputBuffer.getChannelData (0);
-        var right = e.inputBuffer.getChannelData (1);
-        // we clone the samples
-        leftchannel.push (new Float32Array (left));
-        rightchannel.push (new Float32Array (right));
-        recordingLength += bufferSize;
-    }
- 
-    // we connect the recorder
-    volume.connect (recorder);
-    recorder.connect (context.destination); 
+	var iframe = document.createElement('iframe');
+	iframe.id = "tt_container";
+	iframe.src = chrome.extension.getURL("microphone.html");
+	iframe.style.position = 'fixed';
+	iframe.style.top = '15px';
+	iframe.style.right = '15px';
+	iframe.style.height = '100px';
+	iframe.style.width = '350px';
+	iframe.style.background = '-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 100%)';
+	iframe.style.border = '1px solid rgba(204, 204, 204, 0.5)';
+	iframe.style.zIndex = '2147483647';
+	iframe.style.overflowY = 'hidden';
+	iframe.style.borderRadius = '10px';
+
+	document.body.appendChild(iframe);
+
+	$("#tt_container").animate({right:"-300px"},0).animate({right:"30px"},400).animate({right:"15px"},200);
 }
 
-function mergeBuffers(channelBuffer, recordingLength){
-  var result = new Float32Array(recordingLength);
-  var offset = 0;
-  var lng = channelBuffer.length;
-  for (var i = 0; i < lng; i++){
-    var buffer = channelBuffer[i];
-    result.set(buffer, offset);
-    offset += buffer.length;
-  }
-  return result;
-}
 
-function interleave(leftChannel, rightChannel){
-  var length = leftChannel.length + rightChannel.length;
-  var result = new Float32Array(length);
- 
-  var inputIndex = 0;
- 
-  for (var index = 0; index < length; ){
-    result[index++] = leftChannel[inputIndex];
-    result[index++] = rightChannel[inputIndex];
-    inputIndex++;
-  }
-  return result;
-}
-
-function writeUTFBytes(view, offset, string){ 
-  var lng = string.length;
-  for (var i = 0; i < lng; i++){
-    view.setUint8(offset + i, string.charCodeAt(i));
-  }
-}
-
-// we flat the left and right channels down
-var leftBuffer = mergeBuffers ( leftchannel, recordingLength );
-var rightBuffer = mergeBuffers ( rightchannel, recordingLength );
-// we interleave both channels together
-var interleaved = interleave ( leftBuffer, rightBuffer );
- 
-// create the buffer and view to create the .WAV file
-var buffer = new ArrayBuffer(44 + interleaved.length * 2);
-var view = new DataView(buffer);
- 
-// write the WAV container, check spec at: https://ccrma.stanford.edu/courses/422/projects/WaveFormat/
-// RIFF chunk descriptor
-writeUTFBytes(view, 0, 'RIFF');
-view.setUint32(4, 44 + interleaved.length * 2, true);
-writeUTFBytes(view, 8, 'WAVE');
-// FMT sub-chunk
-writeUTFBytes(view, 12, 'fmt ');
-view.setUint32(16, 16, true);
-view.setUint16(20, 1, true);
-// stereo (2 channels)
-view.setUint16(22, 2, true);
-view.setUint32(24, sampleRate, true);
-view.setUint32(28, sampleRate * 4, true);
-view.setUint16(32, 4, true);
-view.setUint16(34, 16, true);
-// data sub-chunk
-writeUTFBytes(view, 36, 'data');
-view.setUint32(40, interleaved.length * 2, true);
- 
-// write the PCM samples
-var lng = interleaved.length;
-var index = 44;
-var volume = 1;
-for (var i = 0; i < lng; i++){
-    view.setInt16(index, interleaved[i] * (0x7FFF * volume), true);
-    index += 2;
-}
- 
-// our final binary blob that we can hand off
-var blob = new Blob ( [ view ], { type : 'audio/wav' } );

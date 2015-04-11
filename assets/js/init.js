@@ -22,11 +22,11 @@
 	skel.init({
 		reset: 'full',
 		breakpoints: {
-			'global':	{ range: '*', href: 'css/style.css', containers: 1140, grid: { gutters: 40 } },
-			'wide':		{ range: '-1680', href: 'css/style-wide.css', containers: 960 },
-			'normal':	{ range: '-1080', href: 'css/style-normal.css', containers: '95%', viewport: { scalable: false } },
-			'narrow':	{ range: '-840', href: 'css/style-narrow.css', grid: { gutters: 30 } },
-			'mobile':	{ range: '-736', href: 'css/style-mobile.css', containers: '95%!', grid: { collapse: true, gutters: 20 } }
+			'global':	{ range: '*', href: 'assets/css/style.css', containers: 1140, grid: { gutters: 40 } },
+			'wide':		{ range: '-1680', href: 'assets/css/style-wide.css', containers: 960 },
+			'normal':	{ range: '-1080', href: 'assets/css/style-normal.css', containers: '95%', viewport: { scalable: false } },
+			'narrow':	{ range: '-840', href: 'assets/css/style-narrow.css', grid: { gutters: 30 } },
+			'mobile':	{ range: '-736', href: 'assets/css/style-mobile.css', containers: '95%!', grid: { collapse: true, gutters: 20 } }
 		}
 	});
 
