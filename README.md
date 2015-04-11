@@ -1,7 +1,7 @@
 # TranslateTube
 Multilingual Video Playback for Youtube
 
-## Stack
+### Stack
 * Firebase
 * jQuery
 * SoundCloud
