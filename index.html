@@ -55,23 +55,6 @@
 				<!-- Carousel 1-->
 			    <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="false">
 			      <div class="carousel-inner" role="listbox" id='cat1'>
-			        <div class="item active">
-		        		<div class='container'>
-		        			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-			        	</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-			        	</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-			        	</div>
-			        </div>
 			      </div>
 
 			      <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
@@ -101,23 +84,6 @@
 					<!-- Carousel 2-->
 			    <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="false">
 			      <div class="carousel-inner" role="listbox" id='cat2'>
-			        <div class="item active">
-		        		<div class='container'>
-		        			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-			        	</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-			        	</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-		        		</div>
-			        </div>
 			      </div>
 
 			      <a class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
@@ -145,23 +111,6 @@
 					<!-- Carousel 3-->
 			    <div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="false">
 			      <div class="carousel-inner" role="listbox" id='cat3'>
-			        <div class="item active">
-		        		<div class='container'>
-		        			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-		        		</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-		          		</div>
-			        </div>
-
-			        <div class="item">
-		        		<div class='container'>
-		          			<iframe width="100%" height="500px" src="https://www.youtube.com/embed/yISKeT6sDOg" frameborder="0" allowfullscreen></iframe>
-		        		</div>
-			        </div>
 			      </div>
 
 			      <a class="left carousel-control" href="#myCarousel3" role="button" data-slide="prev">
@@ -188,6 +137,9 @@
     var vidCats = [];
     var vidTracks = [];
     var onReadys = [];
+    var count1 = false;
+    var count2 = false;
+    var count3 = false;
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
 
@@ -241,11 +193,22 @@
       div2.id = 'player'+numberOfVideos;
       div1.appendChild(div2);
       if (vidCats[numberOfVideos]=='comedy') {
+      	if (!count1) {
+      		div1.className = 'item active';
+      	}
+      	count1 = true;
         document.getElementById('cat1').appendChild(div1);
       } else if (vidCats[numberOfVideos]=='education') {
-	    console.log("hello");
+      	if (!count2) {
+      		div1.className = 'item active';
+      	}
+      	count2 = true;
         document.getElementById('cat2').appendChild(div1);
       } else if (vidCats[numberOfVideos]=='tech') {
+      	if (!count3) {
+      		div1.className = 'item active';
+      	}
+      	count3 = true;
         document.getElementById('cat3').appendChild(div1);
       }
       players[numberOfVideos] = new YT.Player('player'+numberOfVideos, {
