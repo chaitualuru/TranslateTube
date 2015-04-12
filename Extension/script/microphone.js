@@ -44,19 +44,43 @@ $(document).ready(function() {
 			recorder && recorder.stop();
 
 	        recorder && recorder.exportWAV(function(blob) {
-		        console.log('Handing off the file now...');
-		        var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		        var link = window.document.createElement('a');
-		        link.href = url;
-		        link.download = 'output.wav';
-		        var click = document.createEvent("Event");
-		        click.initEvent("click", true, true);
-		        link.dispatchEvent(click);
-	        });
+	        	var id = window.location.hash;
 
-	        document.getElementById("tt_info").innerHTML = "Paste URL here.";
+	        	var fd = new FormData();    
+	        	fd.append( 'file', blob );
+	        	fd.append('id', id);
+
+	        	$.ajax({
+	        	 	url: 'https://127.0.0.1:5000/',
+	        	 	data: fd,
+	        	 	processData: false,
+	        	 	contentType: false,
+	        	 	type: 'POST',
+	        	 	success: function(data){
+	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/" + id.slice(1) + "'></input>";
+	        	 	}
+	        	});
+		        // console.log('Handing off the file now...');
+		        // var url = (window.URL || window.webkitURL).createObjectURL(blob);
+		        // var link = window.document.createElement('a');
+		        // link.href = url;
+		        // link.download = 'output.wav';
+		        // var click = document.createEvent("Event");
+		        // click.initEvent("click", true, true);
+		        // link.dispatchEvent(click);
+	        });
 		}
 		else {
+			// send event to content script to toggle volume
+			// var port = chrome.runtime.connect({name: "started"});
+			// port.postMessage({recording: "true"});
+			// port.onMessage.addListener(function(msg) {
+			//   	if (msg.question == "Who's there?")
+			//     	port.postMessage({answer: "Madame"});
+			//   	else if (msg.question == "Madame who?")
+			//     	port.postMessage({answer: "Madame... Bovary"});
+			// });
+
 			start_player.play();
 			document.getElementById("tt_info").innerHTML = "Recording...";
 			$(".wit-microphone").addClass("active");
