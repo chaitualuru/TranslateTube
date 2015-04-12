@@ -20,6 +20,8 @@
 		background-size:		auto,								cover;
 		background-position: 	top left,							center 0;
 		background-attachment:	fixed,								fixed;
+		height:100%;
+		width: 100%;
 	}
 
 		body.is-scroll
@@ -164,7 +166,7 @@
 		section,
 		article
 		{
-			margin-bottom: 3em;
+			margin-bottom: 0;
 		}
 		
 			section > :last-child,
@@ -1229,3 +1231,80 @@
 		background-image:none;
 	}
 
+	.videopage {
+		padding: 0;
+	}
+
+/*********************************************************************************/
+/* Videopage                                                                     */
+/*********************************************************************************/
+	
+	#videopage
+	{
+		position: relative;
+		color: #fff;
+		text-align: center;
+		background: #35b88f url('images/banner.svg') bottom center no-repeat;
+		width: 100%;
+		height: 100%;
+				
+	}
+
+		#videopage .button
+		{
+			color: #35b882;
+			text-shadow: 0 0 0.5px rgba(53,184,130,0.25);
+		}
+
+		#videopage header
+		{
+			margin: 0 0 0 0;
+		}
+		
+			#videopage header h2
+			{
+				font-weight: 400;
+				font-size: 1.75em;
+				letter-spacing: 8px;
+				padding: 20px 0 20px 0;
+			}
+
+		#videopage p
+		{
+			margin: 0;
+		}
+
+		#videopage footer
+		{
+			margin: 0 0 0 0;
+		}
+		
+		#videopage a
+		{
+			color: inherit;
+			font-size: 2em;
+			text-decoration: none;
+		}
+		
+			#videopage a:hover
+			{
+				text-decoration: none;
+			}
+
+		iframe {
+			display: block;
+			margin: 0 auto;
+		}
+
+		#videobody {
+			background-image: none;
+			background-color: none;
+		}
+
+	html {
+		height: 100%;
+	}
+
+	#videopage div.container {
+		width:60%;
+	}
