@@ -1,18 +1,3 @@
-// var simulateClick = function(element) {
-//   var dispatchEvent = function (elt, name) {
-//     var clickEvent = document.createEvent('MouseEvents');
-//     clickEvent.initEvent(name, true, true);
-//     elt.dispatchEvent(clickEvent);
-//   };
-//   dispatchEvent(element, 'mouseover');
-//   dispatchEvent(element, 'mousedown');
-//   dispatchEvent(element, 'click');
-//   dispatchEvent(element, 'mouseup');
-// };
-
-// simulateClick(document.getElementsByClassName("ytp-button ytp-button-volume")[0]);
-// simulateClick(document.getElementsByClassName("ytp-button ytp-button-play")[0]);
-
 if ($("#tt_container").is(':visible')) {
 	console.log("tt_container is visible. Now hiding.");
 	$("#tt_container").animate({right:"30px"},200).animate({right:"-330px"},300, function() {

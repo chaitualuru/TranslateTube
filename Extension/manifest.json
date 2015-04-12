@@ -31,10 +31,13 @@
 
   "commands": {
   	"_execute_browser_action": {
-  		"suggested_key": {
-  			"default": "Alt+Shift+T"
-  		}
-  	}
+      "suggested_key": {
+        "windows": "Alt+T",
+        "mac": "Alt+T",
+        "chromeos": "Alt+T",
+        "linux": "Alt+T"
+      }
+    }
   },
 
   "author": "kcaluru",
