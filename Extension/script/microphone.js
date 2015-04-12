@@ -70,31 +70,13 @@ $(document).ready(function() {
 	        	 	contentType: false,
 	        	 	type: 'POST',
 	        	 	success: function(data){
-	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/" + id.slice(1) + "'></input>";
-	        	   		addVideo(id.slice(1), data, 'Arabic', 'general');
+	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/videos/#" + id.slice(1) + "'></input>";
+	        	   		addVideo(id.slice(1), [data], 'Arabic', 'tech');
 	        	 	}
 	        	});
-		        // console.log('Handing off the file now...');
-		        // var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		        // var link = window.document.createElement('a');
-		        // link.href = url;
-		        // link.download = 'output.wav';
-		        // var click = document.createEvent("Event");
-		        // click.initEvent("click", true, true);
-		        // link.dispatchEvent(click);
 	        });
 		}
 		else {
-			// send event to content script to toggle volume
-			// var port = chrome.runtime.connect({name: "started"});
-			// port.postMessage({recording: "true"});
-			// port.onMessage.addListener(function(msg) {
-			//   	if (msg.question == "Who's there?")
-			//     	port.postMessage({answer: "Madame"});
-			//   	else if (msg.question == "Madame who?")
-			//     	port.postMessage({answer: "Madame... Bovary"});
-			// });
-
 			start_player.play();
 			document.getElementById("tt_info").innerHTML = "Recording...";
 			$(".wit-microphone").addClass("active");
@@ -103,26 +85,4 @@ $(document).ready(function() {
 			console.log("Recording now.");
 		}
 	});
-
-	// when key is down
-	// window.onkeydown = function(e){
-	//     // if R is pressed, we start recording
-	//     if ( e.keyCode == 82 ){
-	//         recorder && recorder.record();
-	//         console.log('Recording now...');
-	//     // if S is pressed, we stop the recording and package the WAV file
-	//     } else if ( e.keyCode == 83 ){
-	//         recorder && recorder.stop();
-	//         recorder && recorder.exportWAV(function(blob) {
-	// 	        console.log('Handing off the file now...');
-	// 	        var url = (window.URL || window.webkitURL).createObjectURL(blob);
-	// 	        var link = window.document.createElement('a');
-	// 	        link.href = url;
-	// 	        link.download = 'output.wav';
-	// 	        var click = document.createEvent("Event");
-	// 	        click.initEvent("click", true, true);
-	// 	        link.dispatchEvent(click);
-	//         });
-	//     }
-	// }
 });
