@@ -31,12 +31,15 @@
 
   "commands": {
   	"_execute_browser_action": {
-  		"suggested_key": {
-  			"default": "Alt+Shift+T"
-  		}
-  	}
+      "suggested_key": {
+        "windows": "Alt+T",
+        "mac": "Alt+T",
+        "chromeos": "Alt+T",
+        "linux": "Alt+T"
+      }
+    }
   },
 
   "author": "kcaluru",
-  "content_security_policy": "script-src 'self' https://connect.soundcloud.com; object-src 'self'"  
+  "content_security_policy": "script-src 'self' https://connect.soundcloud.com https://cdn.firebase.com https://translatetube.firebaseio.com https://*.firebase.com https://*.firebaseio.com; object-src 'self'"  
 }
