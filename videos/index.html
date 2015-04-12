@@ -1,71 +1,53 @@
 <!DOCTYPE HTML>
 <!--
-  Overflow by HTML5 UP
-  html5up.net | @n33co
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Overflow by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-  <head>
-    <title>TranslateTube</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<head>
+		<title>TranslateTube</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/jquery.scrolly.min.js"></script>
-    <script src="../assets/js/jquery.poptrox.min.js"></script>
-    <script src="../assets/js/skel.min.js"></script>
-    <script src="../assets/js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="../assets/css/skel.css" />
-      <link rel="stylesheet" href="../assets/css/style.css" />
-    </noscript>
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/carousel.css" rel="stylesheet">
-      <script src="//connect.soundcloud.com/sdk.js"></script>
-      <script src="//cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
-      <script src="../Backend/savedata.js"></script>
-  </head>
-  <body>
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/jquery.poptrox.min.js"></script>
+		<script src="../assets/js/skel.min.js"></script>
+		<script src="../assets/js/init.js"></script>
+		<link rel="stylesheet" href="../assets/css/skel.css" />
+		<link rel="stylesheet" href="../assets/css/style.css" />
+		<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href="../assets/css/carousel.css" rel="stylesheet">
+	    <script src="//connect.soundcloud.com/sdk.js"></script>
+	    <script src="//cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	    <script src="../Backend/savedata.js"></script>
+	</head>
+	<body id='videobody'>
+		<!-- Banner -->
 
-    <!-- Banner -->
+			<section id="videopage">
+				<header>
+					<h2>Translate Tube</h2>
+				</header>
+				<div id='comedy'>
 
-      <section id="banner">
-        <header>
-          <h2>COMEDY</h2>
-        </header>
-        <div id='comedy'>
+				<!-- Carousel 1-->
+			    <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="false">
+			      <div class="carousel-inner" role="listbox" id='cat1'>
+			      </div>
+			      <!-- Carousel 1 end-->
+			    </div>
+			</section>
 
-        <!-- Carousel 1-->
-          <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="false">
-            <div class="carousel-inner" role="listbox" id='cat1'>
-            </div>
-
-            <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            <!-- Carousel 1 end-->
-          </div>
-
-        <footer>  
-          <a href="#banner2" class="scrolly-middle glyphicon glyphicon-triangle-bottom">
-          </a>
-        </footer>
-      </section>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-      <script type="text/javascript">$('.carousel').carousel()</script>
-  </body>
-    <script>
+	</body>
+   <script>
     //Video Id
     if (window.location.hash) {
       var vidId = window.location.hash.substring(1);
