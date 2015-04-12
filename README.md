@@ -5,3 +5,6 @@ Multilingual Video Playback for Youtube
 * Firebase
 * jQuery
 * YouTube
+* SoundCloud
+* Flask
+* Chrome Extensions

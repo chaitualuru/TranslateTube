@@ -2,6 +2,19 @@ $(document).ready(function() {
 	var audio_context;
 	var recorder;
 
+	var ref = new Firebase("translatetube.firebaseIO.com");
+
+	var videosRef = ref.child("videos");
+
+	function addVideo(youtube_id, soundcloud_token, language, category) {
+		videosRef.push({
+			id: youtube_id,
+			token: soundcloud_token,
+			lang: language,
+			cat: category
+		});
+	}
+
 	function startUserMedia(stream) {
 	  	var input = audio_context.createMediaStreamSource(stream);
 	  	recorder = new Recorder(input);
@@ -19,20 +32,6 @@ $(document).ready(function() {
 	}
 
 	navigator.getUserMedia({audio: true}, startUserMedia, function(e){});
-
-	// var simulateClick = function(element) {
-	//   	var dispatchEvent = function (elt, name) {
-	//     	var clickEvent = document.createEvent('MouseEvents');
-	//     	clickEvent.initEvent(name, true, true);
-	//     	elt.dispatchEvent(clickEvent);
-	//   	};
-	//   	dispatchEvent(element, 'mouseover');
-	//   	dispatchEvent(element, 'mousedown');
-	//   	dispatchEvent(element, 'click');
-	//   	dispatchEvent(element, 'mouseup');
-	// };
-
-	// simulateClick(document.getElementsByClassName("ytp-button ytp-button-volume")[0]);
 
 	document.getElementById("tt_info").innerHTML = "Press the microphone to record.";
 	var start_player = document.createElement('audio');
@@ -58,19 +57,44 @@ $(document).ready(function() {
 			recorder && recorder.stop();
 
 	        recorder && recorder.exportWAV(function(blob) {
-		        console.log('Handing off the file now...');
-		        var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		        var link = window.document.createElement('a');
-		        link.href = url;
-		        link.download = 'output.wav';
-		        var click = document.createEvent("Event");
-		        click.initEvent("click", true, true);
-		        link.dispatchEvent(click);
-	        });
+	        	var id = window.location.hash;
 
-	        document.getElementById("tt_info").innerHTML = "Paste URL here.";
+	        	var fd = new FormData();    
+	        	fd.append( 'file', blob );
+	        	fd.append('id', id);
+
+	        	$.ajax({
+	        	 	url: 'https://127.0.0.1:5000/',
+	        	 	data: fd,
+	        	 	processData: false,
+	        	 	contentType: false,
+	        	 	type: 'POST',
+	        	 	success: function(data){
+	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/" + id.slice(1) + "'></input>";
+	        	   		addVideo(id.slice(1), data, 'Arabic', 'general');
+	        	 	}
+	        	});
+		        // console.log('Handing off the file now...');
+		        // var url = (window.URL || window.webkitURL).createObjectURL(blob);
+		        // var link = window.document.createElement('a');
+		        // link.href = url;
+		        // link.download = 'output.wav';
+		        // var click = document.createEvent("Event");
+		        // click.initEvent("click", true, true);
+		        // link.dispatchEvent(click);
+	        });
 		}
 		else {
+			// send event to content script to toggle volume
+			// var port = chrome.runtime.connect({name: "started"});
+			// port.postMessage({recording: "true"});
+			// port.onMessage.addListener(function(msg) {
+			//   	if (msg.question == "Who's there?")
+			//     	port.postMessage({answer: "Madame"});
+			//   	else if (msg.question == "Madame who?")
+			//     	port.postMessage({answer: "Madame... Bovary"});
+			// });
+
 			start_player.play();
 			document.getElementById("tt_info").innerHTML = "Recording...";
 			$(".wit-microphone").addClass("active");
@@ -81,27 +105,24 @@ $(document).ready(function() {
 	});
 
 	// when key is down
-	window.onkeydown = function(e){
-	    // if R is pressed, we start recording
-	    if ( e.keyCode == 82 ){
-	        recorder && recorder.record();
-	        console.log('Recording now...');
-	    // if S is pressed, we stop the recording and package the WAV file
-	    } else if ( e.keyCode == 83 ){
-	        recorder && recorder.stop();
-
-	        console.log('Stop recording');
-
-	        recorder && recorder.exportWAV(function(blob) {
-		        console.log('Handing off the file now...');
-		        var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		        var link = window.document.createElement('a');
-		        link.href = url;
-		        link.download = 'output.wav';
-		        var click = document.createEvent("Event");
-		        click.initEvent("click", true, true);
-		        link.dispatchEvent(click);
-	        });
-	    }
-	}
+	// window.onkeydown = function(e){
+	//     // if R is pressed, we start recording
+	//     if ( e.keyCode == 82 ){
+	//         recorder && recorder.record();
+	//         console.log('Recording now...');
+	//     // if S is pressed, we stop the recording and package the WAV file
+	//     } else if ( e.keyCode == 83 ){
+	//         recorder && recorder.stop();
+	//         recorder && recorder.exportWAV(function(blob) {
+	// 	        console.log('Handing off the file now...');
+	// 	        var url = (window.URL || window.webkitURL).createObjectURL(blob);
+	// 	        var link = window.document.createElement('a');
+	// 	        link.href = url;
+	// 	        link.download = 'output.wav';
+	// 	        var click = document.createEvent("Event");
+	// 	        click.initEvent("click", true, true);
+	// 	        link.dispatchEvent(click);
+	//         });
+	//     }
+	// }
 });
