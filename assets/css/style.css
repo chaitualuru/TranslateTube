@@ -911,7 +911,7 @@
 		text-align: center;
 		background: url('../images/blue.png') bottom center no-repeat;
 		background-size: cover;
-		padding: 100px 0 30px 0;
+		padding: 50px 0 30px 0;
 		margin: 0;
 	
 	}
@@ -923,7 +923,6 @@
 
 		#banner2 header
 		{
-			margin: 1em 0 1em 0;
 		}
 		
 			#banner2 header h2
@@ -931,7 +930,7 @@
 				font-weight: 400;
 				font-size: 1.75em;
 				letter-spacing: 8px;
-				margin: 0 0 0 0;
+				
 			}
 
 		#banner2 p

@@ -53,25 +53,10 @@ $(document).ready(function() {
 		        click.initEvent("click", true, true);
 		        link.dispatchEvent(click);
 	        });
-			
+
 	        document.getElementById("tt_info").innerHTML = "Paste URL here.";
 		}
 		else {
-			var simulateClick = function(element) {
-			  	var dispatchEvent = function (elt, name) {
-			    	var clickEvent = document.createEvent('MouseEvents');
-			    	clickEvent.initEvent(name, true, true);
-			    	elt.dispatchEvent(clickEvent);
-			  	};
-			  	dispatchEvent(element, 'mouseover');
-			  	dispatchEvent(element, 'mousedown');
-			  	dispatchEvent(element, 'click');
-			  	dispatchEvent(element, 'mouseup');
-			};
-
-			// simulateClick(document.getElementsByClassName("ytp-button ytp-button-volume")[0]);
-			// simulateClick(document.getElementsByClassName("ytp-button ytp-button-replay")[0]);
-
 			start_player.play();
 			document.getElementById("tt_info").innerHTML = "Recording...";
 			$(".wit-microphone").addClass("active");
@@ -90,7 +75,6 @@ $(document).ready(function() {
 	//     // if S is pressed, we stop the recording and package the WAV file
 	//     } else if ( e.keyCode == 83 ){
 	//         recorder && recorder.stop();
-
 	//         recorder && recorder.exportWAV(function(blob) {
 	// 	        console.log('Handing off the file now...');
 	// 	        var url = (window.URL || window.webkitURL).createObjectURL(blob);
