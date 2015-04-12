@@ -70,8 +70,8 @@ $(document).ready(function() {
 	        	 	contentType: false,
 	        	 	type: 'POST',
 	        	 	success: function(data){
-	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/" + id.slice(1) + "'></input>";
-	        	   		addVideo(id.slice(1), data, 'Arabic', 'general');
+	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/videos/" + id.slice(1) + "'></input>";
+	        	   		addVideo(id.slice(1), [data], 'Arabic', 'tech');
 	        	 	}
 	        	});
 	        });
