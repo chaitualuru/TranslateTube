@@ -2,6 +2,19 @@ $(document).ready(function() {
 	var audio_context;
 	var recorder;
 
+	var ref = new Firebase("translatetube.firebaseIO.com");
+
+	var videosRef = ref.child("videos");
+
+	function addVideo(youtube_id, soundcloud_token, language, category) {
+		videosRef.push({
+			id: youtube_id,
+			token: soundcloud_token,
+			lang: language,
+			cat: category
+		});
+	}
+
 	function startUserMedia(stream) {
 	  	var input = audio_context.createMediaStreamSource(stream);
 	  	recorder = new Recorder(input);
@@ -58,6 +71,7 @@ $(document).ready(function() {
 	        	 	type: 'POST',
 	        	 	success: function(data){
 	        	   		document.getElementById("tt_info").innerHTML = "<input type='text' id='textbox' value='https://translatetube.me/" + id.slice(1) + "'></input>";
+	        	   		addVideo(id.slice(1), data, 'Arabic', 'general');
 	        	 	}
 	        	});
 		        // console.log('Handing off the file now...');

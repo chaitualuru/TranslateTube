@@ -119,8 +119,8 @@
 	font-size: 15px;
 }
 
-#textbox { 
-    border: 2.5px solid rgb(170,170,170);
+/*#textbox { 
+    border: 1px solid rgb(170,170,170);
     -webkit-border-radius: 30px; 
     -moz-border-radius: 30px; 
     border-radius: 30px; 
@@ -130,3 +130,15 @@
     padding-left:5px; 
     padding-right:10px; 
   } 
+*/
+
+#textbox { 
+    background: white; 
+    border: 1px solid #DDD; 
+    border-radius: 8px; 
+    box-shadow: 0 0 5px #DDD inset; 
+    color: #666; 
+    outline: none; 
+    height:33px; 
+    width: 170px; 
+}

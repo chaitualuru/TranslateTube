@@ -41,5 +41,5 @@
   },
 
   "author": "kcaluru",
-  "content_security_policy": "script-src 'self' https://connect.soundcloud.com; object-src 'self'"  
+  "content_security_policy": "script-src 'self' https://connect.soundcloud.com https://cdn.firebase.com https://translatetube.firebaseio.com https://*.firebase.com https://*.firebaseio.com; object-src 'self'"  
 }

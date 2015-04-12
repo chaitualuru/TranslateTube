@@ -12,7 +12,7 @@ else if ($('#tt_container').is(':hidden')) {
 else {
 	console.log("tt_container is being initialized for the first time. Creating tt.");
 	var url = document.URL;	
-	var id = /=([a-zA-Z0-9\-]+)/.exec(url)[1];
+	var id = /=([a-zA-Z0-9\-_]+)/.exec(url)[1];
 	var iframe = document.createElement('iframe');
 	iframe.id = "tt_container";
 	iframe.src = chrome.extension.getURL("microphone.html") + "#" + id;
