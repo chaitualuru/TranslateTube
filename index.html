@@ -136,6 +136,7 @@
     var vidLangs = [];
     var vidCats = [];
     var vidTracks = [];
+    var vidTrackNumber = [];
     var onReadys = [];
     var count1 = false;
     var count2 = false;
@@ -179,10 +180,11 @@
 
     function createYTObj(key, videos) {
       vidIds.push(videos[key].id);
+      vidTrackNumber.push(0);
       vidTokens.push(videos[key].token);
       vidCats.push(videos[key].cat);
       vidLangs.push(videos[key].lang);
-      SC.stream(vidTokens[numberOfVideos], function(track){
+      SC.stream(vidTokens[numberOfVideos][vidTrackNumber[numberOfVideos]], function(track){
         vidTracks.push(track);
       });
       onReadys[numberOfVideos] = false;
