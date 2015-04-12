@@ -52,6 +52,7 @@
     if (window.location.hash) {
       var vidId = window.location.hash.substring(1);
     }
+    var vidTrackNumber;
     var vidToken;
     var vidLang;
     var vidCat;
@@ -97,10 +98,11 @@
     });
 
     function createYTObj(key, videos) {
+      vidTrackNumber = 0;
       vidToken = videos[key].token;
       vidCat = videos[key].cat;
       vidLang = videos[key].lang;
-      SC.stream(vidToken, function(track){
+      SC.stream(vidToken[vidTrackNumber], function(track){
         vidTrack = track;
       });
       onReady = false;
